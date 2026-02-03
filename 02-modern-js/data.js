@@ -7,7 +7,7 @@
 export const books = [
     {
         id: 1,
-        title: "The Clean Coder",
+        title: "The Cean Coder",
         author: "Robert C. Martin",
         year: 2011,
         genre: "Programming",
