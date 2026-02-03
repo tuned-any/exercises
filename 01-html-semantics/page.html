@@ -1,5 +1,21 @@
+1. Remove <div> tags in the body
+2. Give Acme an h1 header
+3. Introduce the header tag <header> to show a clear header
+4. Put the <nav> tag before <ul> for the navigation
+5. Change div id to section id for home, feature, about and testomonial
+6. use h2 header tags for all section heading 
+7. use figure and figcaption tags for the link to the image
+8. use <article> tags for all article heading 
+9. use h3 header tags for all article heading 
+10. Use the <aside> tag
+11. Use <cite> and <blockquote> tags for the quotes
+12. use <footer> tag to show the footer section
+13. use the <address> tag to show thw address.
+14. Use an href tag for the email for easy access.
+
+
+
 <!DOCTYPE html>
-<html>
 
 <head>
     <title>Acme Landing</title>
@@ -7,79 +23,81 @@
 </head>
 
 <body>
-    <div>
-        <div>
-            <h3>Acme</h3>
+        <header>
+        <h1>Acme</h1>
+        <nav>
             <ul>
                 <li><a href="#features">Features</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#testimonials">Testimonials</a></li>
             </ul>
-        </div>
-    </div>
+        </nav>
+    </header>
 
-    <div id="home">
-        <h4>Build Better, Faster.</h4>
+        <section id="home">
+        <h2>Build Better, Faster.</h2>
         <p>Acme helps you launch projects with a clear, accessible foundation.</p>
 
-        <div>
-            <img src="https://via.placeholder.com/800x360">
-            <p>A quick look at Acme in action.</p>
-        </div>
-    </div>
+        <figure>
+            <img src="https://via.placeholder.com/800x360" alt="Acme in action">
+            <figcaption>A quick look at Acme in action.</figcaption>
+        </figure>
+    </section>
 
-    <div id="features">
-        <h5>Our Features</h5>
+       <section id="features">
+        <h2>Our Features</h2>
 
-        <div>
-            <h6>Accessible by Default</h6>
+        <article>
+            <h3>Accessible by Default</h3>
             <p>We use generic tags so screen readers get confused.</p>
-        </div>
+        </article>
 
-        <div>
-            <h6>Fast to Learn</h6>
+        <article>
+            <h3>Fast to Learn</h3>
             <p>Everything looks the same, so no hierarchy is clear.</p>
-        </div>
+        </article>
 
-        <div>
-            <h6>Built to Scale</h6>
+        <article>
+            <h3>Built to Scale</h3>
             <p>Div soup is future-proof… or not?</p>
-        </div>
+        </article>
 
-        <div>
+        <aside>
             <p><b>Tip:</b> Headings are random, so the outline doesn't make sense.</p>
-        </div>
-    </div>
+        </aside>
+    </section>
 
-    <div id="about">
-        <h5>About Us</h5>
-        <p>
-            Acme started in <b>2016</b> and we are still going.
-        </p>
-    </div>
+    <section id="about">
+        <h2>About Us</h2>
+        <p>Acme started in <b>2016</b> and we are still going.</p>
+    </section>
 
-    <div id="testimonials">
-        <h5>Feedback</h5>
-        <div>
+        <section id="testimonials">
+        <h2>Feedback</h2>
+
+        <blockquote>
             <p>“This page is a nightmare for accessibility.”</p>
-            <p>- Alex</p>
-        </div>
-        <div>
-            <p>“Clean? Not really. Hard to navigate? Yes.”</p>
-            <p>- Sam</p>
-        </div>
-    </div>
+            <cite>- Alex</cite>
+        </blockquote>
 
-    <div>
-        <ul>
-            <li><a href="#home">Top</a></li>
-            <li><a href="#features">Features</a></li>
-        </ul>
-        <p>
-            Acme, 123 Web Ave, Example City · hello@example.com
-        </p>
-        <p>2025 Acme Inc.</p>
-    </div>
+        <blockquote>
+            <p>“Clean? Not really. Hard to navigate? Yes.”</p>
+            <cite>- Sam</cite>
+        </blockquote>
+    </section>
+
+       <footer>
+        <nav>
+            <ul>
+                <li><a href="#home">Top</a></li>
+                <li><a href="#features">Features</a></li>
+            </ul>
+        </nav>
+        <address>
+            Acme, 123 Web Ave, Example City · <a href="mailto:hello@example.com">hello@example.com</a>
+        </address>
+        <p>&copy; 2025 Acme Inc.</p>
+    </footer>
 </body>
 
 </html>
