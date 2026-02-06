@@ -16,38 +16,65 @@ export class LibraryManager {
     }
 
     /**
-     * TODO: Implement addBooks method using rest parameters and search functionality
-     * addBooks(...newBooks): Add multiple books using spread operator, update statistics
-     * searchBooks({title, author, genre} = {}, caseSensitive = false): Search with destructuring and optional chaining
+     * Add multiple books using rest parameters and update statistics
      */
     addBooks(...newBooks) {
-        // Add books using spread operator and update statistics
-    }
-
-    searchBooks({ title, author, genre } = {}, caseSensitive = false) {
-        // Implement search logic with destructuring and optional chaining
+        // Use spread operator to merge new books into the current collection
+        this.books = [...this.books, ...newBooks];
+        this.#updateStatistics();
     }
 
     /**
-     * TODO: Implement getStatistics and updateBook methods
-     * getStatistics(): Return computed statistics object with total, available, checked out counts
-     * updateBook(book, updates): Use logical assignment operators (??=, ||=, &&=)
+     * Search with destructuring and optional chaining
+     */
+    searchBooks({ title, author, genre } = {}, caseSensitive = false) {
+        return this.books.filter(book => {
+            const matches = (field, search) => {
+                if (!search) return true;
+                const val = field ?? ""; // Nullish coalescing for safety
+                return caseSensitive 
+                    ? val.includes(search) 
+                    : val.toLowerCase().includes(search.toLowerCase());
+            };
+
+            // Using optional chaining and destructuring logic
+            return matches(book.title, title) &&
+                   matches(book.author, author) &&
+                   matches(book.genre, genre);
+        });
+    }
+
+    /**
+     * Return computed statistics object
      */
     getStatistics() {
-        // Return statistics with computed property names
-    }
-
-    updateBook(book, updates) {
-        // Use logical assignment operators to update book properties
+        // Return a copy of the private field to prevent external mutation
+        return { ...this.#statistics };
     }
 
     /**
-     * TODO: Implement higher-order functions and memoization
-     * createBookFormatter(formatter): Return function that applies formatter to book arrays
-     * memoize(fn): Use Map to cache function results
+     * Update book properties using logical assignment operators
+     */
+    updateBook(book, updates) {
+        if (!book || !updates) return;
+
+        // Logical nullish assignment: set only if current value is null or undefined
+        book.genre ??= updates.genre;
+
+        // Logical OR assignment: set if current value is "falsy" (e.g., empty string)
+        book.title ||= updates.title;
+
+        // Example of logical AND assignment: update location only if availability already exists
+        book.availability &&= { ...book.availability, ...updates.availability };
+
+        this.#updateStatistics();
+        return book;
+    }
+
+    /**
+     * Calculate statistics and store in private field
      */
     #updateStatistics() {
-        // Calculate statistics and store in private field
         this.#statistics = {
             total: this.books.length,
             available: this.books.filter(book => book.availability?.status === 'available').length,
@@ -56,12 +83,31 @@ export class LibraryManager {
     }
 }
 
+/**
+ * Higher-order function: returns a function that applies a formatter to an array
+ */
 export const createBookFormatter = (formatter) => {
-    // Return function that applies formatter to book arrays
+    return (bookArray) => bookArray.map(book => formatter(book));
 };
 
+/**
+ * Memoization: uses a Map to cache expensive function results
+ */
 export const memoize = (fn) => {
-    // Use Map to cache expensive function results
+    const cache = new Map();
+    
+    return (...args) => {
+        // Create a cache key from arguments
+        const key = JSON.stringify(args);
+        
+        if (cache.has(key)) {
+            return cache.get(key);
+        }
+        
+        const result = fn(...args);
+        cache.set(key, result);
+        return result;
+    };
 };
 
 // Export default library instance
