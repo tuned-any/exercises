@@ -40,35 +40,59 @@ export const books = [
 ];
 
 // TODO: Create a Map for book categories and a Set for unique authors
-// Map: "Programming" -> "Books about programming languages and techniques"
-//      "Software Engineering" -> "Books about software design and architecture"
-// Set: Extract all unique author names from the books array using spread operator
-export const categoryDescriptions = null; // Replace with your Map
-export const uniqueAuthors = null; // Replace with your Set
+export const categoryDescriptions = new Map([
+    ["Programming", "Books about programming languages and techniques"],
+    ["Software Engineering", "Books about software design and architecture"]
+]);
+
+// Extract unique authors using map to get names, then Set to filter, then spread into array
+export const uniqueAuthors = [...new Set(books.map(book => book.author))];
+
+
 
 /**
  * TODO: Implement filterBooksByStatus and groupBooksByGenre functions
  * filterBooksByStatus: Use array filter method and optional chaining for availability
- * groupBooksByGenre: Return Map with genre as key, array of books as value
  */
 export function filterBooksByStatus(bookArray, status) {
-    // Filter books by availability status, handle undefined availability
+    return bookArray.filter(book => book.availability?.status === status);
 }
 
+
+
+/**
+ * groupBooksByGenre: Return Map with genre as key, array of books as value
+ */
 export function groupBooksByGenre(bookArray) {
-    // Group books into Map by genre
+    const genreMap = new Map();
+    
+    for (const book of bookArray) {
+        if (!genreMap.has(book.genre)) {
+            genreMap.set(book.genre, []);
+        }
+        genreMap.get(book.genre).push(book);
+    }
+    
+    return genreMap;
 }
 
 /**
  * TODO: Create generator function and book summary function
  * bookTitleGenerator: Generator that yields each book title using for...of
+ */
+export function* bookTitleGenerator(bookArray) {
+    for (const book of bookArray) {
+        yield book.title;
+    }
+}
+
+/**
  * createBookSummary: Use destructuring and template literals for formatted output
  * Example: "The Clean Coder by Robert C. Martin (2011) - Available at A1-23"
  */
-export function* bookTitleGenerator(bookArray) {
-    // Yield book titles one by one
-}
-
 export function createBookSummary(book) {
-    // Destructure book properties and create formatted summary
+    const { title, author, year, availability } = book;
+    const locationInfo = availability?.location ? `Available at ${availability.location}` : "Location not specified";
+    
+    return `${title} by ${author} (${year}) - ${locationInfo}`;
 }
