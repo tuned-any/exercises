@@ -38,7 +38,7 @@ todoList.addEventListener('click', (event) => {
  
 
         // ============================================
-        // Step 1: Create API Functions
+        // Step 1: getUser & getPost Functions
         // ============================================
         
         function getUser(id) {
@@ -130,4 +130,5 @@ todoList.addEventListener('click', (event) => {
                     </ul>
                 </div>
             `;
+
         }
