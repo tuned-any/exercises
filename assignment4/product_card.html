@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Card Web-Component</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    min-height: 100vh;
+    background: #d1d1eb;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+  }
+  h1 {
+    color: #0f0f10;
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.5;
+  }
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+  }
+  #event-log {
+    background: #535357;
+    border: 1px solid #2d2d3d;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    color: #a0aec0;
+    font-size: 0.8rem;
+    width: 100%;
+    max-width: 680px;
+    min-height: 52px;
+    font-family: 'Courier New', monospace;
+  }
+  #event-log span { color: #68d391; }
+</style>
+</head>
+<body>
+
+<h1>Web Components</h1>
+
+<div class="grid">
+
+  <product-card name="AI Activated Belt" price="209.99">
+    <img slot="image" src="https://placehold.co/600x400/000000/FFF" alt="Belt">
+    <span slot="description">Premium noise-cancelling buckles with holes that fits any size. For both sexes.</span>
+  </product-card>
+
+  <product-card name="Electronic keys" price="129.00">
+    <img slot="image" src="https://placehold.co/600x400/000000/F27171" alt="Keys">
+    <span slot="description">Compact MGB layout with light rays to activate connection with the controller.</span>
+  </product-card>
+
+  <product-card name="Virtual Phone Hub" price="49.95">
+    <img slot="image" src="https://placehold.co/600x400/000000/E21a1c" alt="Hub">
+    <span slot="description">7-in-1 hub with 4K HDMI, compatible with all kinds of phone. With USB 3.0 ports.</span>
+  </product-card>
+
+</div>
+
+<div id="event-log">Purchase events will appear here…</div>
+
+
+<script src="productcard.js"></script>
+<script></script>
+</body>
+</html>
