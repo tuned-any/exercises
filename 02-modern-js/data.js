@@ -60,7 +60,6 @@ export const uniqueAuthors = [...new Set(books.map(book => book.author))];
 /**
  * TODO: Implement filterBooksByStatus and groupBooksByGenre functions
  * filterBooksByStatus: Use array filter method and optional chaining for availability
- * groupBooksByGenre: Return Map with genre as key, array of books as value
  */
 const libraryBooks = [
     { title: "JavaScript: The Good Parts", genre: "Programming", availability: { status: "available" } },
@@ -87,6 +86,14 @@ export const groupBooksByGenre = (books) => {
 /**
  * TODO: Create generator function and book summary function
  * bookTitleGenerator: Generator that yields each book title using for...of
+ */
+export function* bookTitleGenerator(bookArray) {
+    for (const book of bookArray) {
+        yield book.title;
+    }
+}
+
+/**
  * createBookSummary: Use destructuring and template literals for formatted output
  * Example: "The Clean Coder by Robert C. Martin (2011) - Available at A1-23"
  */
@@ -114,5 +121,8 @@ export function* bookTitleGenerator(books) {
 }
 
 export function createBookSummary(book) {
-    // Destructure book properties and create formatted summary
+    const { title, author, year, availability } = book;
+    const locationInfo = availability?.location ? `Available at ${availability.location}` : "Location not specified";
+    
+    return `${title} by ${author} (${year}) - ${locationInfo}`;
 }
