@@ -1,0 +1,319 @@
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #f5f7fa;
+  color: #1a1a2e;
+  min-height: 100vh;
+}
+
+/* Layout */
+.form-builder {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 0 16px 60px;
+}
+
+/* Form Title Input */
+.form-title-input {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1a1a2e;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #dde3f0;
+  width: 100%;
+  padding: 4px 0 6px;
+  outline: none;
+  margin-bottom: 20px;
+  letter-spacing: -0.3px;
+  transition: border-color 0.2s;
+}
+
+.form-title-input:focus {
+  border-bottom-color: #3b7dff;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 2px;
+  border-bottom: 1px solid #dde3f0;
+  margin-bottom: 24px;
+}
+
+.tab-btn {
+  padding: 8px 20px;
+  border: none;
+  background: none;
+  font-size: 13px;
+  font-weight: 400;
+  color: #8ca0c5;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.tab-btn:hover {
+  color: #3b7dff;
+}
+
+.tab-btn.active {
+  font-weight: 600;
+  color: #1a1a2e;
+  border-bottom-color: #3b7dff;
+}
+
+/* Field Editor Card */
+.field-card {
+  background: #ffffff;
+  border: 1px solid #e8edf5;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 10px;
+  transition: box-shadow 0.15s;
+}
+
+.field-card:hover {
+  box-shadow: 0 2px 12px rgba(59, 125, 255, 0.07);
+}
+
+/* Field Card Header */
+.field-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.field-type-badge {
+  font-size: 11px;
+  font-weight: 600;
+  color: #3b7dff;
+  background: #eef3ff;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.4px;
+  flex: 1;
+}
+
+/* Icon Buttons (move/remove) */
+.icon-btn {
+  background: none;
+  border: 1px solid #e8edf5;
+  border-radius: 6px;
+  padding: 3px 9px;
+  font-size: 13px;
+  color: #8a94a6;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.icon-btn:hover:not(:disabled) {
+  background: #f5f7fa;
+  border-color: #c8d0e0;
+  color: #1a1a2e;
+}
+
+.icon-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.icon-btn.danger {
+  color: #e05252;
+}
+
+.icon-btn.danger:hover {
+  background: #fff0f0;
+  border-color: #f5c0c0;
+  color: #c0392b;
+}
+
+/* Form Grid (2-col) */
+.field-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+/* Labels */
+label.field-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: #8a94a6;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 5px;
+}
+
+/* Inputs & Selects & Textarea */
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  padding: 8px 11px;
+  border: 1px solid #dde3f0;
+  border-radius: 7px;
+  background: #f9fafc;
+  color: #1a1a2e;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+  font-family: inherit;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+select:focus,
+textarea:focus {
+  border-color: #3b7dff;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(59, 125, 255, 0.1);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #b8c0d0;
+}
+
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238a94a6' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 30px;
+  cursor: pointer;
+}
+
+/* Required Checkbox */
+.required-toggle {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  color: #8a94a6;
+  cursor: pointer;
+  margin-top: 4px;
+  user-select: none;
+}
+
+.required-toggle input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+  accent-color: #3b7dff;
+  cursor: pointer;
+}
+
+/* Add Field Button */
+.add-field-btn {
+  width: 100%;
+  padding: 11px;
+  border: 2px dashed #dde3f0;
+  border-radius: 10px;
+  background: transparent;
+  color: #8a94a6;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+
+.add-field-btn:hover {
+  border-color: #3b7dff;
+  color: #3b7dff;
+  background: #f4f7ff;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 48px 20px;
+  color: #b8c0d0;
+  font-size: 14px;
+}
+
+/* Preview Panel */
+.preview-panel {
+  background: #ffffff;
+  border: 1px solid #e8edf5;
+  border-radius: 12px;
+  padding: 28px;
+  box-shadow: 0 2px 16px rgba(59, 125, 255, 0.06);
+}
+
+.preview-form-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #eef1f7;
+}
+
+.preview-field {
+  margin-bottom: 16px;
+}
+
+.preview-field-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #3d4a63;
+  margin-bottom: 6px;
+}
+
+.preview-field-label .required-star {
+  color: #e05252;
+  margin-left: 3px;
+}
+
+/* Submit Button */
+.submit-btn {
+  margin-top: 12px;
+  padding: 9px 24px;
+  background: #3b7dff;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.2px;
+  transition: background 0.15s, box-shadow 0.15s, transform 0.1s;
+}
+
+.submit-btn:hover {
+  background: #2563eb;
+  box-shadow: 0 4px 14px rgba(59, 125, 255, 0.35);
+}
+
+.submit-btn:active {
+  transform: translateY(1px);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #dde3f0;
+  border-radius: 10px;
+}
